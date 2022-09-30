@@ -88,9 +88,9 @@
   align-items: flex-start;
 } */
 
-.product ul li {
-  display: inline-block;
-  width: 150px;
+.product tr td {
+  /* display: inline-block; */
+  width: 500px;
   border: 1px solid skyblue;
   padding: 5px;
 }

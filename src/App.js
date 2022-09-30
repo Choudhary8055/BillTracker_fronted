@@ -20,7 +20,7 @@ function App() {
 					<Route path="/updatelist/:id" element={<UpdateLable />} />
 				</Routes>
 			</BrowserRouter>
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 }
