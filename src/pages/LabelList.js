@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import moment from 'moment';
-// import Pagination from './Pagination';
+import moment from 'moment';
+import Pagination from './Pagination';
 
 function LabelList() {
 	const [products, setProducts] = useState([]);
@@ -10,14 +10,15 @@ function LabelList() {
 		searchFor: 'lable',
 		searchValue: ''
 	});
-	const [pageNum, setPageNum] = useState(1);
-	const [buttons, setButtons] = useState([1,2,3,4,5]);
-	// const [currentPage, setCurrentPage] = useState(1);
-    // const [postsPerPage, setPostsPerPage] = useState(8);
+	// const [pageNum, setPageNum] = useState(1);
+	// const [buttons, setButtons] = useState([1,2,3,4,5]);
 
-	// const lastPostIndex = currentPage * postsPerPage;
-    // const firstPostIndex = lastPostIndex - postsPerPage;
-    // const currentPosts = products.slice(firstPostIndex, lastPostIndex);
+	const [currentPage, setCurrentPage] = useState(1);
+    const [lablePerPage, setLablePerPage] = useState(8);
+
+	const lastPostIndex = currentPage * lablePerPage;
+    const firstPostIndex = lastPostIndex - lablePerPage;
+    const currentPosts = products.slice(firstPostIndex, lastPostIndex);
 
 
 	const getData = async () => {
@@ -32,21 +33,27 @@ function LabelList() {
 	}, []);
 
 	const deleteFn = async (id)=>{
-     console.log("hit delete api...");
+     
 	 const url =`http://localhost:3500/delete/${id}`;
 	 const deleted = await axios.delete(url);
 	 console.log(deleted);
+	 const filteredData = products.filter(value => {
+		if (value._id !== id) {
+			return value;
+		}
+	});
+	setProducts([...filteredData]);
 
 	}
 
 
-	const updatePageNum = (num) => {
-        setPageNum(num)
-    }
+	// const updatePageNum = (num) => {
+    //     setPageNum(num)
+    // }
 
-	useEffect(() => {
-        getData();
-    }, [pageNum]);
+	// useEffect(() => {
+    //     getData();
+    // }, [currentPage]);
 
 	const searchLable = async (searchValue) => {
 	
@@ -74,7 +81,7 @@ function LabelList() {
 		}
 		
 	};
-	// console.log(products);
+	
 	return (
 		<div className="Lable-list">
 			<h3>Product List</h3>
@@ -97,10 +104,10 @@ function LabelList() {
 			<button onClick={searchLable}>Search</button>
 			<div className="product">
 				<table>
-
+                    <tbody>
 			 {products && products.map((value, index) => {
 						return (
-							// <ul key={value.amount + index}>
+						
 							<tr key={value.amount + index}>
 								<td>
 									{index + 1}
@@ -112,37 +119,34 @@ function LabelList() {
 									{value.amount}
 								</td>
 								<td>
-									
 									{value.createdAt}
 								</td>
-								<td>
-									
-									{value.updatedAt}
-								</td>
+								
 								<td><button>
 									<Link to={`/updatelist/${value._id}`}>Update Bill</Link>
 								</button></td> 
-								<td><button onClick={()=>{deleteFn(value._id)}}>
+								<td><button onClick={()=>deleteFn(value._id)}>
 									Delete
 								</button></td> 
 							</tr>
 								
 						);
 					})}
+					</tbody>
 						</table>
-			</div>
-			{
+			</div> 
+			{/* {
                     buttons && buttons.map((value) => (
                         <button className='btn btn-sm btn-primary' onClick={() => updatePageNum(value)}>{value}</button>
                     ))
-            }
-			<button className='btn btn-sm btn-primary' onClick={(e)=>setButtons(e.target.value)}>Next</button>
-			{/* <Pagination
+            } */}
+			{/* <button className='btn btn-sm btn-primary' onClick={(e)=>setButtons(e.target.value)}>Next</button> */}
+			<Pagination
                 totalPosts={products.length}
-                postsPerPage={postsPerPage}
+                lablePerPage={lablePerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
-            /> */}
+            />
 		</div>
 	);
 }

@@ -6,6 +6,7 @@ function AddLable() {
     const [lable, setLable] = useState("");
     const [amount, setAmount]=useState("");
     const navigate = useNavigate();
+    
     const storeData = async ()=>{
         const data = {
             lable,
@@ -16,7 +17,7 @@ function AddLable() {
 
 		let result = await axios.post(url, data);
     navigate('/');
-}
+} 
 
   return (
     <>

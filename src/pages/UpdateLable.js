@@ -30,12 +30,13 @@ function UpdateLable() {
 	}, []);
 
 	return (
-		<div>
+		<div className='product'>
 			Lable:
 			<input
 				placeholder="Enter the label name"
 				value={data.lable}
 				onChange={e => setData({ ...data, lable: e.target.value })}
+				className="inputBox"
 			/>
 			<br />
 			<br />
@@ -44,11 +45,12 @@ function UpdateLable() {
 				placeholder="Enter the label amount"
 				value={data.amount}
 				onChange={e => setData({ ...data, amount: e.target.value })}
+				className="inputBox"
 			/>
-			<input
+			{/* <input
 				value={data.date}
 				onChange={e => setData({ ...data, date: e.target.value })}
-			/>
+			/> */}
 			<button onClick={storeData}>Submit</button>
 		</div>
 	);
