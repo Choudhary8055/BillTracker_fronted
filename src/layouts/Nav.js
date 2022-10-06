@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 function Nav() {
+	
+	
 	return (
 		<div>
 			<ul className="nav-ul">
@@ -12,6 +16,7 @@ function Nav() {
 					<Link to="/addlist">Add Bill</Link>
 				</li>
 			</ul>
+			
 		</div>
 	);
 }

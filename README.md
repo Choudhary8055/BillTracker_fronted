@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Pagination-->
+1--> create useState variable
+2--> after the calculation part
+3--> after data comes from backend
+4--> after add on button
+
+
+new task --> 
+1--> fronted===> create a button and upload the csv file and the data store in backend 
+              ---> store data in lableList 
+2--> backend task--> 1--> api store  csv file  in backend 
+3--> t

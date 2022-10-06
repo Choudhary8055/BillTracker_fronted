@@ -2,7 +2,7 @@ import AddLable from './pages/AddLable';
 import UpdateLable from './pages/UpdateLable';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './layouts/Nav';
-import Footer from './layouts/Footer';
+// import Footer from './layouts/Footer';
 import LableList from './pages/LabelList';
 
 import './App.css';
